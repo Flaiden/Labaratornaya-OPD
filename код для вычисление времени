@@ -1,0 +1,117 @@
+using namespace std;
+ 
+void input_time(int &h, int &m, int &s)
+{
+    do
+    {
+        cout << "\n\t\tчасы: \t"; cin >> h;
+        if(h < 0 || h > 23)
+            cout << "!!!УКАЗАН ЗАПРЕДЕЛЬНЫЙ ДИАПАЗОН (повторите ввод)" << endl;
+    }while(!(h >= 0 && h < 24));
+     
+    do
+    {
+        cout << "\t\tминуты: "; cin >> m;
+        if(m < 0 || m > 59)
+            cout << "!!!УКАЗАН ЗАПРЕДЕЛЬНЫЙ ДИАПАЗОН (повторите ввод)" << endl;
+    }while(!(m >= 0 && m < 60));
+     
+    do
+    {
+        cout << "\t\tсекунды:"; cin >> s;
+        if(s < 0 || s > 59)
+            cout << "!!!УКАЗАН ЗАПРЕДЕЛЬНЫЙ ДИАПАЗОН (повторите ввод)" << endl;
+    }while(!(s >= 0 && s < 60));
+}
+ 
+void sub_time(int &h, int &m, int &s)
+{
+    int sec = 0, e_sec = 0, h_t, m_t;
+ 
+    cout << "\n\n\t\tВведите колличество секунд: "; cin >> sec;
+     
+    e_sec = ((h * 3600) + (m * 60) + s);
+     
+    if(e_sec < sec)
+    {
+        h = 0;
+        m = 0;
+        s = 0;
+        system("cls");
+        cout << "\t\t\tОСТАТОК ВРЕМЯНИ ПОСЛЕ ВЫЧИТАНИЯ: " << h <<':' << m << ':' << s << endl;
+        return;
+    }else
+    {
+        h = (e_sec - sec) / 3600;
+        m = ((h * 3600) - (e_sec - sec)) / 60;
+        if(m < 0)
+            m *= -1;
+        if(h > 0)
+        {
+            s = (((h * 3600) - (m * 60)) - (e_sec - sec));
+        }else
+            {
+                s = ((m * 60) - (e_sec - sec));
+            }
+        if(s < 0)
+            s *= -1;
+    }
+    system("cls");
+    cout << "\t\t\tОСТАТОК ВРЕМЯНИ ПОСЛЕ ВЫЧИТАНИЯ: " << h <<':' << m << ':' << s << endl;
+}
+ 
+void difference_time(int &h, int &m, int &s)
+{
+    int h_t = 0, m_t = 0, s_t = 0;
+ 
+    cout << "\n\n\t\t\tВведите второй момент времяни: " << endl;
+    input_time(h_t, m_t, s_t);
+ 
+    h -= h_t;
+    if(h < 0)
+        h *= -1;
+    m -= m_t;
+    if(m < 0)
+        m *= -1;
+    s -= s_t;
+    if(s < 0)
+        s *= -1;
+         
+    cout << "\n\t\t\tРазница между введенными моментами времени: " << (s + (m * 60) + (h * 3600)) << endl;
+}
+ 
+int main()
+{
+    char a;
+    int h = 0, m = 0, s = 0;
+    setlocale(LC_ALL, "Russian");
+     
+    cout << "\t\t\tТЕКУЩЕЕ ВРЕМЯ: " << h <<':' << m << ':' << s << endl;
+ 
+    while(true)
+    {
+        cout << "\n\t\t\tМЕНЮ:" << endl;
+        cout << "\n\t\tI Ввод времяни" << endl;
+        cout << "\t\tS Вычитание от введенного времени (вычитается секундами)" << endl;
+        cout << "\t\tC Подсчет колличиства секунд между двумя отрезками времени" << endl;
+        cout << "\t\tQ Выход";
+     
+        a = _getch();
+        switch(a)
+        {
+            case 'I' : case 'i' :
+                cout << "\n\n\t\t\tВведите текущее время: " << endl;
+                input_time(h, m, s);
+                system("cls");
+                cout << "\t\t\tВВЕДЕННОЕ ВРЕМЯ: " << h <<':' << m << ':' << s << endl;
+                break;
+            case 'S' : case 's' : sub_time(h, m, s); break;
+            case 'C' : case 'c' : difference_time(h, m, s); break;
+            case 'Q' : case 'q' : exit(1); break;
+        }
+    }
+     
+    _getch();
+ 
+    return 0;
+}
