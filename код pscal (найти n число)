@@ -1,0 +1,10 @@
+var
+n, sum: integer;
+begin
+read(n);
+repeat
+sum := sum + n;
+n := n - 1;
+until n = 0;
+writeln(sum);
+end.
