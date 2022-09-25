@@ -1,0 +1,30 @@
+// C++ Program to find the radius
+// of the incircle of the given triangle
+#include <bits/stdc++.h>
+using namespace std;
+// Function to find the radius
+// of the incircle
+float findRadiusOfIncircle( float a, float b, float c)
+{
+// the sides cannot be negative
+if (a < 0  c < 0)
+return -1;
+// semi-perimeter of the circle
+float p = (a + b + c) / 2;
+// area of the traingle
+float area = sqrt (p * (p - a) * (p - b) * (p - c));
+// Radius of the incircle
+float radius = area / p;
+// Return the radius
+radius; return
+}
+// Driver code
+int main()
+{
+// Get the sides of the traingle
+float a = 2, b = 2, c = 3;
+// Find the radius of the incircle
+cout << findRadiusOfIncircle(a, b, c)
+<< endl;
+return 0;
+}
