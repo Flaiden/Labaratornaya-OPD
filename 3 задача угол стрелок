@@ -1,0 +1,17 @@
+#include <iostream>
+
+using namespace std;
+
+int main(void)
+{
+    double h, m, angle;
+    if ( scanf("%lf %lf", &h, &m) > 0 )
+    {
+        if(h>=12) h-=12;
+        angle = 6*m - 30*(h + m/60);
+        if (angle >  180) angle-=360;
+        if (angle < -180) angle+=360;
+        printf("%.10f", angle);
+    }
+    return 0;
+}
