@@ -1,0 +1,28 @@
+#include <iostream>
+#include <cmath>
+#include <conio.h>
+ 
+using namespace std;
+int main()
+{
+ 
+int a,b,c,R;
+cout<<"Введите катет "<<endl;
+cin>>a;
+cout<<"Введите катет "<<endl;
+cin>>b;
+c=(a*a+b*b);
+cout<<"гипотенуза ="<<c;
+
+cout<<"Введите катет "<<endl;
+cin>>a;
+cout<<"Введите катет "<<endl;
+cin>>b;
+cout<<"Введите гипотенузу"<<endl;
+cin>>c;
+R=(a+b-c)/2;
+cout<<"Радиус окружности ="<<R;
+getch();
+
+return 0;
+}
