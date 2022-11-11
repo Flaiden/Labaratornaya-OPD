@@ -1,0 +1,39 @@
+#include <iostream>
+#include <fstream>
+#include <math.h>
+#include <locale.h>
+
+
+using namespace std;
+int main()
+{
+setlocale (LC_ALL, "Russian");
+ ifstream f_input;
+ ofstream f_output;
+    int a,i;
+    cout<<"Программа для нахождения наименьшего делителя"<<endl;
+    f_input.open ("data.txt");
+    if (f_input.fail())
+    {
+        cout<<"Не удалось открыть файл\n";
+        return 1;
+    }
+    i=1 
+    while (!f_input.eof())
+    {
+        f_input>>a;
+        cout<<"Число"<<i<<":"<<a<<endl;
+    }
+    f_input.close();
+    f_output.open("result.txt");
+    f_output<<"максимальное число: "<<a;
+    f_output.close();
+    cout<<"Результат записан в файл result.txt";
+    
+    cin>>a;
+    int b=2;
+    while (a>2 && b!=1){
+        if(a%b==0){
+            cout<<b;break;}
+        b++;}
+    return 0;
