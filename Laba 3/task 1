@@ -37,7 +37,7 @@ int main() {
  
     }
     
-    std::ofstream f_out("result.txt");
+    std::ofstream f_out("kolmax.txt");
     f_out << number << " " << max << '\n';
  
     return 0;
