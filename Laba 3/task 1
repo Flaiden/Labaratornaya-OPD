@@ -5,12 +5,12 @@
  
 int main() {
     
-    std::ifstream f_in("predel.txt");
+    ifstream f_in("predel.txt");
     int limit;
  
     if (!f_in) {
  
-        std::cerr << "не удалось открыть файл\n";
+       cerr << "не удалось открыть файл\n";
         return 1;
  
     }
@@ -21,12 +21,12 @@ int main() {
     int current;
     int max = INT_MIN;
     int sum = 0;
-    std::size_t number = 0;
+    size_t number = 0;
  
     while (sum < limit) {
  
-        std::cout << "Введите число: ";
-        std::cin >> current;
+        cout << "Введите число: ";
+        cin >> current;
         ++number;
  
         if (number % 2 == 0)
@@ -37,7 +37,7 @@ int main() {
  
     }
     
-    std::ofstream f_out("kolmax.txt");
+    ofstream f_out("kolmax.txt");
     f_out << number << " " << max << '\n';
  
     return 0;
